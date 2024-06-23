@@ -1,10 +1,23 @@
-const left = document.querySelector(".left")
-const right = document.querySelector(".right")
-const container = document.querySelector(".container")
+const sounds = ["applause","boo","fart","tada","victory","wet_fart","wrong_answer"];
 
-left.addEventListener("mouseenter",()=>container.classList.add('hover-left'))
-left.addEventListener("mouseleave",()=>container.classList.remove('hover-left'))
+sounds.forEach(sound=>{
+    const btn = document.createElement("button")
+    btn.classList.add("btn")
 
-right.addEventListener("mouseenter",()=>container.classList.add('hover-right'))
-right.addEventListener("mouseleave",()=>container.classList.remove('hover-right'))
+    btn.innerText = sound
 
+    btn.addEventListener("click",()=>{
+        stopSound()
+        document.getElementById(sound).play()
+    })
+
+    document.getElementById("buttons").appendChild(btn)
+})
+
+function stopSound(){
+    sounds.forEach(sound=>{
+        const song =  document.getElementById(sound);
+        song.pause();
+        song.currentTime = 0
+    })
+}

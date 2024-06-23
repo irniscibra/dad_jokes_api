@@ -1,0 +1,17 @@
+cd C:\Users\Irnis\Desktop\javascipt_small_projects\projekt_3_split_landing_page
+
+# Überprüfen Sie den aktuellen Branch
+git branch
+
+# Erstellen oder umbenennen zu 'main', falls nicht vorhanden
+git branch -M main
+
+# Fügen Sie Änderungen hinzu und committen Sie, falls nicht geschehen
+git add .
+git commit -m "Initial commit"
+
+# Überprüfen Sie die Remote-URL
+git remote -v
+
+# Pushen Sie zu GitHub
+git push -u origin main
