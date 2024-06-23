@@ -1,23 +1,15 @@
-const sounds = ["applause","boo","fart","tada","victory","wet_fart","wrong_answer"];
+const jokeEl = document.getElementById("joke")
+const jokeBtn = document.getElementById("joke_btn")
 
-sounds.forEach(sound=>{
-    const btn = document.createElement("button")
-    btn.classList.add("btn")
+jokeBtn.addEventListener("click",generateJoke)
 
-    btn.innerText = sound
+generateJoke()
 
-    btn.addEventListener("click",()=>{
-        stopSound()
-        document.getElementById(sound).play()
-    })
-
-    document.getElementById("buttons").appendChild(btn)
-})
-
-function stopSound(){
-    sounds.forEach(sound=>{
-        const song =  document.getElementById(sound);
-        song.pause();
-        song.currentTime = 0
-    })
+function generateJoke(){
+    fetch("https://icanhazdadjoke.com",{
+        headers:{"Accept":"application/json"}
+    }).then(response=>response.json()).then(data=>
+        jokeEl.innerHTML = data.joke
+    )
 }
+
